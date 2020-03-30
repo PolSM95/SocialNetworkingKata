@@ -43,7 +43,7 @@ public class ActionHandler {
     }
 
     public Post extractPost(String inputMessage){
-        return new Post(inputMessage.split(separator)[1]);
+        return new Post(inputMessage.split(separator)[1], inputMessage.split(separator)[0]);
     }
     public User extractFollowedUser(String inputMessage){
         return users.checkUser(new User(inputMessage.split(separator)[1], console));

@@ -24,6 +24,7 @@ public class User {
             posts.addPost(post);
         }
     }
+
     public void addFollow(User user){
         follows.addFollow(user);
     }
@@ -32,13 +33,13 @@ public class User {
     }
     public void printWall(){
         List<Post> temporalList = new ArrayList<>();
+
         temporalList = posts.insertPostsIntoList(temporalList);
         temporalList = follows.insertPostsIntoList(temporalList);
 
         for (Post post : temporalList) {
-            post.print(console);
+            post.printWallFormat(console);
         }
-
     }
 
     public Posts getPosts() {

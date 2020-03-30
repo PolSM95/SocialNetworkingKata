@@ -41,20 +41,23 @@ public class SocialNetworkShould {
         verify(console).printLine("Damn! We lost!");
         verify(console).printLine("Good game though.");
     }
-    /*\> Charlie -> I'm in New York today! Anyone want to have a coffee?
-            ​
-            \> Charlie follows Alice
-    ​
-            \> Charlie wall
-     */
+
     @Test
     public void add_follows_into_user_followList(){
+        socialNetwork.processAction("Charlie -> I'm in New York today! Anyone want to have a coffee?");
+        socialNetwork.processAction("Charlie follows Alice");
+        socialNetwork.processAction("Charlie wall");
+
+        verify(console).printLine("Charlie - I'm in New York today! Anyone want to have a coffee?");
+    }
+    @Test
+    public void print_wall_when_two_users_posted(){
         socialNetwork.processAction("Charlie -> I'm in New York today! Anyone want to have a coffee?");
         socialNetwork.processAction("Charlie follows Alice");
         socialNetwork.processAction("Alice -> I'm in New York today!");
         socialNetwork.processAction("Charlie wall");
 
-        verify(console).printLine("I'm in New York today! Anyone want to have a coffee?");
-        verify(console).printLine("I'm in New York today!");
+        verify(console).printLine("Charlie - I'm in New York today! Anyone want to have a coffee?");
+        verify(console).printLine("Alice - I'm in New York today!");
     }
 }
