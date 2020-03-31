@@ -9,8 +9,15 @@ public class CommandPost implements Command {
     public CommandPost(Post post){
         this.post = post;
     }
+
+    // Used sleep to synchronize Threads when posting multiple posts
     @Override
     public void execute(User user) {
-        user.addPost(post);
+        try {
+            Thread.sleep(100);
+            user.addPost(post);
+        } catch (Exception e){
+            System.err.println(e);
+        }
     }
 }

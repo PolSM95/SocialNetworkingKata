@@ -1,7 +1,9 @@
 package socialnetwork.core;
 
 import socialnetwork.infraestructure.Console;
+import socialnetwork.infraestructure.TimeFormatter;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +17,8 @@ public class Posts {
     }
 
     public void printPosts() {
-        for (Post post: postList) {
-            post.print(console);
+        for (Post post : postList) {
+            post.printPost(console);
         }
     }
 

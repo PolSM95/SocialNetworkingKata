@@ -1,10 +1,9 @@
 package socialnetwork.core;
 
 import socialnetwork.infraestructure.Console;
+import socialnetwork.infraestructure.TimeFormatter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class User {
     private String name;
@@ -37,8 +36,10 @@ public class User {
         temporalList = posts.insertPostsIntoList(temporalList);
         temporalList = follows.insertPostsIntoList(temporalList);
 
+        Collections.sort(temporalList);
+
         for (Post post : temporalList) {
-            post.printWallFormat(console);
+            post.printPostWall(console);
         }
     }
 
